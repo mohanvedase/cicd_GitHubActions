@@ -58,6 +58,10 @@ jobs:
 
       - name: Test Python code
         run: pytest test_app.py
+
+      - name: Install action
+        run: pip install mohanvedase/github-release-action
+
         
       - name: Create version 1.0
         run: |
