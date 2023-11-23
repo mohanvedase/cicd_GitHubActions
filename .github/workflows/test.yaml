@@ -23,7 +23,7 @@ jobs:
       
 
       - name: run the flask application
-        run: python app.py
+        run: python app.py &
 
       - name: Install pytest
         run: pip install pytest
