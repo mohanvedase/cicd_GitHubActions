@@ -35,6 +35,9 @@ jobs:
       - name: Set executable permission
         run: chmod +x test_app.py
 
+      - name: Install Flask
+        run: pip install flask
+
       - name: Install pytest
         run: pip install pytest
 
