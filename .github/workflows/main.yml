@@ -1,0 +1,59 @@
+name: Deploy to Dev and Main
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11'
+
+      - name: Install flask
+        run: pip install flask
+
+      
+
+      - name: run the flask application
+        run: python app.py
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Test Python code
+        run: python test_script.py
+
+      - name: Set deployment environment
+        run: echo "DEPLOY_ENVIRONMENT=dev" >> $GITHUB_ENV
+
+      - name: Deploy to dev/staging environment
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          ref: dev
+
+      - name: Check deployment status
+        if: steps.deploy-to-dev.outcome == 'success'
+        run: echo "Deployment to dev/staging environment successful"
+
+      - name: Deploy to development/main environment
+        if: steps.deploy-to-dev.outcome == 'success'
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
+
+      - name: Push code to development/main branch
+        if: steps.deploy-to-dev.outcome == 'success'
+        run: git push origin main
+        
