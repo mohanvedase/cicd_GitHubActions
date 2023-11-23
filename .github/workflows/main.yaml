@@ -14,8 +14,7 @@ jobs:
         with:
           python-version: '3.10'
           
-      - name: Install Flask
-        run: pip install Flask
+      
 
       - name: Run Flask Application
         run: python app.py &
@@ -34,6 +33,9 @@ jobs:
           
       - name: Set executable permission
         run: chmod +x test_app.py
+
+      - name: Install pytest
+        run: pip install pytest
 
 
       - name: Test Python code
