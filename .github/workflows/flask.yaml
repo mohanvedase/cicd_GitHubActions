@@ -27,7 +27,7 @@ jobs:
         run: pip install flask
 
       - name: Run Flask Application
-        run: python app.py
+        run: python app.py &
 
   test:
     runs-on: ubuntu-latest
