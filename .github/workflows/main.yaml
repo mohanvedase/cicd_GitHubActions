@@ -44,4 +44,17 @@ jobs:
 
       - name: Test Python code
         run: pytest test_app.py
+        
+      - name: Create version 1.0
+        run: |
+          git tag -a v1.0 -m "Version 1.0 release"
+          git push origin v1.0
+
+      - name: Deploy to dev environment
+        uses: actions/deploy@v2
+        with:
+          repo: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+            DEPLOY_ENVIRONMENT: dev
 
