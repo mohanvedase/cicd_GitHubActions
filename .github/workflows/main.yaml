@@ -35,16 +35,4 @@ jobs:
         run: pip install pytest
       - name: Test Python code
         run: pytest test_app.py
-      - name: Create version 1.0
-        run: |
-          git tag -a v1.0 -m "Version 1.0 release"
-          git push origin v1.0
-      - name: Deploy to dev environment
-        uses: mohanvedase/github-release-action@v1.0.1
-        with:
-          repo: mohanvedase/github-release-action
-          token: ${{ secrets.DEPLOY_TOKEN }}
-          branch: dev
-          release_name: ${{ github.sha }}
-        env:
-          DEPLOY_ENVIRONMENT: dev
+      
