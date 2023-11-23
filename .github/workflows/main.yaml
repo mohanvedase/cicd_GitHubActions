@@ -53,7 +53,7 @@ jobs:
       - name: Deploy to dev environment
         uses: actions/deploy@v2
         with:
-          repo: ${{ https://github.com/mohanvedase/cicd_GitHubActions.git }}
+          repo: ${{ mohanvedase/cicd_GitHubActions.git }}
           token: ${{ secrets.DEPLOY_TOKEN }}
         env:
             DEPLOY_ENVIRONMENT: dev
