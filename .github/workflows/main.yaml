@@ -50,11 +50,13 @@ jobs:
           git tag -a v1.0 -m "Version 1.0 release"
           git push origin v1.0
 
+  
+
       - name: Deploy to dev environment
-        uses: actions/deploy@v2
+        uses: mohanvedase/github-release-action@v1.0.1
         with:
-          repo: mohanvedase/cicd_GitHubActions
+          repo: ${{ mohanvedase/cicd_GitHubActions.git }}
           token: ${{ secrets.DEPLOY_TOKEN }}
-        env:
-            DEPLOY_ENVIRONMENT: dev
+          branch: dev
+          release_name: ${{ github.sha }}
 
