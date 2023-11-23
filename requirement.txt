@@ -1,0 +1,5 @@
+# Core dependencies
+flask
+
+# Testing dependencies
+pytest
