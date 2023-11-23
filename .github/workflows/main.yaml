@@ -55,8 +55,11 @@ jobs:
       - name: Deploy to dev environment
         uses: mohanvedase/github-release-action@v1.0.1
         with:
-          repo:  https://github.com/mohanvedase/cicd_GitHubActions.git 
+          repo: mohanvedase/cicd_GitHubActions.git
           token: ${{ secrets.DEPLOY_TOKEN }}
           branch: dev
           release_name: ${{ github.sha }}
+    env:
+      DEPLOY_ENVIRONMENT: dev
+
 
