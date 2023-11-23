@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,12 +51,11 @@ jobs:
           git tag -a v1.0 -m "Version 1.0 release"
           git push origin v1.0
 
-  
 
       - name: Deploy to dev environment
         uses: mohanvedase/github-release-action@v1.0.1
         with:
-          repo: ${{ mohanvedase/cicd_GitHubActions.git }}
+          repo:  mohanvedase/cicd_GitHubActions.git 
           token: ${{ secrets.DEPLOY_TOKEN }}
           branch: dev
           release_name: ${{ github.sha }}
