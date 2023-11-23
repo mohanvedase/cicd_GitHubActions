@@ -17,8 +17,8 @@ jobs:
       - name: Install Flask
         run: pip install Flask
 
-      - name: Build Python code
-        run: python app.py
+      - name: Run Flask Application
+        run: python app.py &
   test:
     runs-on: ubuntu-latest
 
